@@ -3,12 +3,27 @@ library(extrafont)
 library(emojifont)
 
 #LOADING FONTS
-###NOTE THIS STEP TAKES FOREVER - EXECUTE AND THEN GO GET A CUPPA
-font_import()                                            
+font_import()
 load.fontawesome(font = "fontawesome-webfont.ttf")
-fonts()[grep("Awesome", fonts())]
+###
+#IF THAT DOES NOT WORK DOWNLOAD BRANDS, REGULAR AND SOLID TTF FROM HERE:
+##https://github.com/FortAwesome/Font-Awesome/tree/master/webfonts
+##
+font_import(path = "C:/Users/jbird/Downloads", pattern = 'fa-', prompt = F)
+####
+
+#Load fonts in
 loadfonts(device = "win")
 
+#Check fonts are there
+fonts()[grep("Awesome", fonts())]
+
+#adding families to 'sysfonts'
+library(showtext)
+font_add(family = "FontAwesome5Free-Solid", regular = "C:\\Users\\jbird\\Downloads\\fa-solid-900.ttf")
+font_add(family = "FontAwesome5Free-Regular", regular = "C:\\Users\\jbird\\Downloads\\fa-regular-400.ttf")
+font_add(family = "FontAwesome5Brands-Regular", regular = "C:\\Users\\jbird\\Downloads\\fa-brands-400.ttf")
+showtext_auto()
 
 parts <-
   c(
@@ -18,6 +33,7 @@ parts <-
     `HE\nPart Time\n(17,057)` = 6
   )
 
+#now you can load glyphs
 waffle(
   parts,
   rows = 5,
@@ -26,7 +42,7 @@ waffle(
   title = "College students by level and study mode, 2017-18",
   legend_pos = "bottom",
   xlab = "each person represents ~3,000 enrolments",
-  use_glyph = "child"
+  use_glyph = "apple"
 )
 ##########################################################################
 parts2 <-
@@ -48,3 +64,4 @@ waffle(
   use_glyph = "child"
 )
 
+###########################################################################
